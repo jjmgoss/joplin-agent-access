@@ -41,3 +41,21 @@ Phase 1 is successful when a locally running service can:
 3. create a note only in a designated notebook such as `Agent Inbox`
 4. deny unsafe operations by default
 5. produce audit logs for all actions
+
+## Preferred execution model
+
+Phase 1 should be executed in batches rather than issue-by-issue autonomous churn.
+
+The preferred sequence is:
+- Batch A: design lock and trust boundary
+- Batch B: repo scaffold and Joplin substrate
+- Batch C: service MVP
+- Batch D: tests, smoke path, and repo cleanup
+
+Approval is expected after Batch A and Batch C.
+
+Recommended model usage:
+- use a premium model for Batch A and Batch C
+- use an included lower-cost model such as GPT-4.1 for Batch B and Batch D
+
+The autonomous unit of work should be a batch, not the entire Phase 1 roadmap.
