@@ -30,6 +30,28 @@ Phase 1 is local-only:
 - attachment writes
 - raw storage access
 
+## Preferred autonomous implementation shape
+
+This project should be implemented in bounded batches rather than as a single open-ended autonomous run.
+
+Why:
+- Phase 1 has natural design and trust-boundary checkpoints
+- batching reduces orchestration churn and makes validation easier
+- approval should happen only at meaningful product gates rather than after every small issue
+
+Expected stop points:
+- after design lock and trust-boundary decisions
+- after the first working end-to-end local service slice
+- before any expansion of trust boundaries, auth complexity, or internet exposure
+
+Expected autonomous behavior within a batch:
+- read the relevant issues and docs first
+- work on a single branch for the batch
+- commit incrementally
+- validate before pushing
+- document implementation in issue comments
+- close only the issues that clearly meet acceptance criteria
+
 ## Future evolution
 
 The gateway should be designed so that it can later sit behind:
